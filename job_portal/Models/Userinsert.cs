@@ -28,6 +28,7 @@ namespace job_portal.Models
         [Required(ErrorMessage ="Enter Name")]
         public string name { set; get; }
         [RegularExpression(@"^[6789]\d{9}$", ErrorMessage = "Enter Valid Phone")]
+        [Required(ErrorMessage ="Enter Phone")]
         public string phone { set; get; }
         public int gid { set; get; }
         public string gname { set; get; }
@@ -38,16 +39,18 @@ namespace job_portal.Models
         public string address { set; get; }
         public List<qualificationcheckbox> myqualification { set; get; }
         public string[] selectedqual { set; get; }
+        public string qualf { set; get; }
         [Required(ErrorMessage ="Enter Experience In Years")]
         public int experience { set; get; }
         public List<skillcheckbox> myskills { set; get; }
         public string[] selectedskill { set; get; }
+        public string skll { set; get; }
         [EmailAddress(ErrorMessage ="Enter Valid Mail Address")]
         [Required(ErrorMessage = "Enter Email")]
         public string email { set; get; }
         [Required(ErrorMessage = "Enter Password")]
         public string password { set; get; }
-        [Compare("password",ErrorMessage ="Password Should MAtch")]
+        [Compare("password",ErrorMessage ="Password Should Match")]
         public string confirmpassword { set; get; }
         public string usrmsg { set; get; }
 

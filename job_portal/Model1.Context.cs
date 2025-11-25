@@ -180,5 +180,14 @@ namespace job_portal
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_regidselect", emailParameter, pswdParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> sp_emailcount(string email)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_emailcount", emailParameter);
+        }
     }
 }

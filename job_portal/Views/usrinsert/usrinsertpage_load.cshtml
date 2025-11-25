@@ -1,0 +1,112 @@
+﻿@model job_portal.Models.Userinsert
+@{
+    ViewBag.Title = "usrinsertpage_load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Registration</h2>
+<div>
+    @using (Html.BeginForm("insert_click", "usrinsert", FormMethod.Post))
+    {
+        <div>
+            <label>Name:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.name)
+            @Html.ValidationMessageFor(m => m.name)
+        </div>
+
+        <div>
+            <label>Phone:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.phone)
+            @Html.ValidationMessageFor(m => m.phone)
+        </div>
+
+        <div>
+            <label>Gender:</label>
+        </div>
+        <div>
+            @Html.DropDownList("ddlgender", (SelectList)ViewBag.selgender, "--select--", new { @class = "form-control" })
+        </div>
+
+        <div>
+            <label>Age:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.age)
+            @Html.ValidationMessageFor(m => m.age)
+        </div>
+
+        <div>
+            <label>Address:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.address)
+            @Html.ValidationMessageFor(m => m.address)
+        </div>
+
+        <div>
+            <label>Qualification:</label>
+        </div>
+        <div>
+            @foreach (var item in Model.myqualification)
+            {
+                <label>
+                    <input type="checkbox" value="@item.qualvalue" checked="@item.qualischecked" name="selectedqual" id="@item.qualvalue" /> @Html.Raw(@item.qualtext)
+                </label>
+            }
+        </div>
+
+        <div>
+            <label>Experience:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.experience)
+            @Html.ValidationMessageFor(m => m.experience)
+        </div>
+
+        <div>
+            <label>Skills:</label>
+        </div>
+        <div>
+            @foreach (var item in Model.myskills)
+            {
+                <label>
+                    <input type="checkbox" value="@item.skillvalue" checked="@item.skillischecked" name="selectedskill" id="@item.skillvalue" /> @Html.Raw(@item.skilltext)
+                </label>
+            }
+        </div>
+
+        <div>
+            <label>Email:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.email)
+            @Html.ValidationMessageFor(m => m.email)
+        </div>
+
+        <div>
+            <label>Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.password)
+            @Html.ValidationMessageFor(m=>m.password)
+        </div>
+
+        <div>
+            <label>Confirm Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.confirmpassword)
+            @Html.ValidationMessageFor(m => m.confirmpassword)
+        </div>
+
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.usrmsg)
+        </div>
+    }
+</div>
+

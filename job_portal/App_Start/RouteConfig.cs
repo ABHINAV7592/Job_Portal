@@ -16,7 +16,7 @@ namespace job_portal
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "cmpnyinsert", action = "companyinsert_pageload", id = UrlParameter.Optional }
             );
         }
     }

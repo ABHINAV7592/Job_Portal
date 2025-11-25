@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="jobportal_mvcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="jobportal_mvcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="company_table">
           <Key>
             <PropertyRef Name="company_id" />
@@ -77,6 +77,9 @@
         <Function Name="sp_emailcheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="email" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="sp_emailcount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_insertcmpny" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="na" Type="varchar" Mode="In" />
@@ -119,8 +122,7 @@
           <EntitySet Name="login_table" EntityType="Self.login_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="user_table" EntityType="Self.user_table" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="jobportal_mvcModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -200,7 +202,7 @@
             <Parameter Name="pswd" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_emailcheck" ReturnType="Collection(Int32)">
-            <Parameter Name="email" Mode="In" Type="String" />
+          <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_insertcmpny">
             <Parameter Name="id" Mode="In" Type="Int32" />
@@ -236,6 +238,9 @@
           <FunctionImport Name="sp_regidselect" ReturnType="Collection(Int32)">
             <Parameter Name="email" Mode="In" Type="String" />
             <Parameter Name="pswd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_emailcount" ReturnType="Collection(Int32)">
+            <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -322,6 +327,7 @@
           <FunctionImportMapping FunctionImportName="sp_logintype" FunctionName="jobportal_mvcModel.Store.sp_logintype" />
           <FunctionImportMapping FunctionImportName="sp_regidcount" FunctionName="jobportal_mvcModel.Store.sp_regidcount" />
           <FunctionImportMapping FunctionImportName="sp_regidselect" FunctionName="jobportal_mvcModel.Store.sp_regidselect" />
+          <FunctionImportMapping FunctionImportName="sp_emailcount" FunctionName="jobportal_mvcModel.Store.sp_emailcount" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
