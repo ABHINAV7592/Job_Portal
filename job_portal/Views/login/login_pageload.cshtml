@@ -1,0 +1,41 @@
+﻿@model job_portal.Models.LoginInsert
+@{
+    ViewBag.Title = "login_pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login Page</h2>
+<div>
+    @using (Html.BeginForm("login_click", "login", FormMethod.Post))
+    {
+        <div>
+            <label>Email:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.email)
+            @Html.ValidationMessageFor(m => m.email)
+        </div>
+
+        <div>
+            <label>Password:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.password)
+            @Html.ValidationMessageFor(m => m.password)
+        </div>
+
+        <div>
+            <input type="submit" value="Login" />
+            @Html.DisplayFor(m => m.loginmsg)
+        </div>
+
+        <div>
+            @Html.ActionLink("Register As A Company", "companyinsert_pageload", "cmpnyinsert")
+        </div>
+
+        <div>
+            @Html.ActionLink("Register As A User", "usrinsertpage_load", "usrinsert")
+        </div>
+    }
+</div>
+

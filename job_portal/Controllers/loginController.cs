@@ -29,11 +29,11 @@ namespace job_portal.Controllers
                         {
                             if (type == "Admin")
                             {
-                                return RedirectToAction("userhome");
+                                return RedirectToAction("cmpnyprofile_pageload", "cmpnyprofile");
                             }
                             else if (type == "User")
                             {
-                                return RedirectToAction("adminhome");
+                                return RedirectToAction("usrprofile_pageload", "userprofile");
                             }
                             else
                             {
