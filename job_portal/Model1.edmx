@@ -88,6 +88,20 @@
           <Parameter Name="addr" Type="varchar" Mode="In" />
           <Parameter Name="locatn" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="sp_insertjobpost" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cmpnyid" Type="int" Mode="In" />
+          <Parameter Name="jobtitle" Type="varchar" Mode="In" />
+          <Parameter Name="loc" Type="varchar" Mode="In" />
+          <Parameter Name="exp" Type="int" Mode="In" />
+          <Parameter Name="skill" Type="varchar" Mode="In" />
+          <Parameter Name="qual" Type="varchar" Mode="In" />
+          <Parameter Name="passyr" Type="int" Mode="In" />
+          <Parameter Name="jobsts" Type="varchar" Mode="In" />
+          <Parameter Name="strtdate" Type="date" Mode="In" />
+          <Parameter Name="enddate" Type="date" Mode="In" />
+          <Parameter Name="desc" Type="varchar" Mode="In" />
+          <Parameter Name="jobtype" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_insertusr" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="na" Type="varchar" Mode="In" />
@@ -240,7 +254,21 @@
             <Parameter Name="pswd" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_emailcount" ReturnType="Collection(Int32)">
-            <Parameter Name="email" Mode="In" Type="String" />
+          <Parameter Name="email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_insertjobpost">
+            <Parameter Name="cmpnyid" Mode="In" Type="Int32" />
+            <Parameter Name="jobtitle" Mode="In" Type="String" />
+            <Parameter Name="loc" Mode="In" Type="String" />
+            <Parameter Name="exp" Mode="In" Type="Int32" />
+            <Parameter Name="skill" Mode="In" Type="String" />
+            <Parameter Name="qual" Mode="In" Type="String" />
+            <Parameter Name="passyr" Mode="In" Type="Int32" />
+            <Parameter Name="jobsts" Mode="In" Type="String" />
+            <Parameter Name="strtdate" Mode="In" Type="DateTime" />
+            <Parameter Name="enddate" Mode="In" Type="DateTime" />
+            <Parameter Name="desc" Mode="In" Type="String" />
+            <Parameter Name="jobtype" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -328,6 +356,7 @@
           <FunctionImportMapping FunctionImportName="sp_regidcount" FunctionName="jobportal_mvcModel.Store.sp_regidcount" />
           <FunctionImportMapping FunctionImportName="sp_regidselect" FunctionName="jobportal_mvcModel.Store.sp_regidselect" />
           <FunctionImportMapping FunctionImportName="sp_emailcount" FunctionName="jobportal_mvcModel.Store.sp_emailcount" />
+          <FunctionImportMapping FunctionImportName="sp_insertjobpost" FunctionName="jobportal_mvcModel.Store.sp_insertjobpost" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
