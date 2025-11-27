@@ -242,5 +242,10 @@ namespace job_portal
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insertjobpost", cmpnyidParameter, jobtitleParameter, locParameter, expParameter, skillParameter, qualParameter, passyrParameter, jobstsParameter, strtdateParameter, enddateParameter, descParameter, jobtypeParameter);
         }
+    
+        public virtual ObjectResult<sp_displayalljobs_Result> sp_displayalljobs()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_displayalljobs_Result>("sp_displayalljobs");
+        }
     }
 }

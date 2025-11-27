@@ -1,8 +1,105 @@
-﻿
+﻿@model job_portal.Models.JobPost
 @{
     ViewBag.Title = "jobpost_pageload";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Post Jobs</h2>
+<div>
+    @using (Html.BeginForm("jobpostinsert_click", "jobposting", FormMethod.Post))
+    {
+        <div>
+            <label>Job Title:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobtitle)
+            @Html.ValidationMessageFor(m => m.jobtitle)
+        </div>
+
+        <div>
+            <label>Job Location:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.location)
+            @Html.ValidationMessageFor(m => m.location)
+        </div>
+
+        <div>
+            <label>Experience In Years:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.experience)
+            @Html.ValidationMessageFor(m => m.experience)
+        </div>
+
+        <div>
+            <label>Skills:</label>
+        </div>
+        <div>
+            @foreach (var item in Model.jobskill)
+            {
+                <label>
+                    <input type="checkbox" value="@item.skillvalue" checked="@item.skillischecked" name="selectedjobskill" id="@item.skillvalue" /> @Html.Raw(@item.skilltext)
+                </label>
+            }
+        </div>
+
+        <div>
+            <label>Qualification:</label>
+        </div>
+        <div>
+            @foreach (var item in Model.jobqualification)
+            {
+                <label>
+                    <input type="checkbox" value="@item.qualvalue" checked="@item.qualischecked" name="selectedjobqual" id="@item.qualvalue" /> @Html.Raw(@item.qualtext)
+                </label>
+            }
+        </div>
+
+        <div>
+            <label>Passout Year:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.passoutyear)
+            @Html.ValidationMessageFor(m => m.passoutyear)
+        </div>
+
+        <div>
+            <label>Job Start Date:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobstartdate, new { @type = "date" })
+            @Html.ValidationMessageFor(m => m.jobstartdate)
+        </div>
+
+        <div>
+            <label>Job End Date:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobenddate, new { @type = "date" })
+            @Html.ValidationMessageFor(m => m.jobenddate)
+        </div>
+
+        <div>
+            <label>Job Description::</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobdescription)
+            @Html.ValidationMessageFor(m => m.jobdescription)
+        </div>
+
+        <div>
+            <label>Job Type:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobtype)
+            @Html.ValidationMessageFor(m => m.jobtype)
+        </div>
+
+        <div>
+            <input type="submit" value="Post" />
+            @Html.DisplayFor(m=>m.jobmsg)
+        </div>
+    }
+</div>
 
