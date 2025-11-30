@@ -72,6 +72,17 @@
           <Property Name="user_status" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Function Name="sp_alljobdisplay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_applicationcount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="usrid" Type="int" Mode="In" />
+          <Parameter Name="jobid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_applicationinsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uid" Type="int" Mode="In" />
+          <Parameter Name="jobid" Type="int" Mode="In" />
+          <Parameter Name="date" Type="date" Mode="In" />
+          <Parameter Name="resume" Type="varchar" Mode="In" />
+          <Parameter Name="sts" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_countregid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="email" Type="varchar" Mode="In" />
           <Parameter Name="pswd" Type="varchar" Mode="In" />
@@ -283,6 +294,17 @@
           <Parameter Name="qry" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_alljobdisplay" ReturnType="Collection(jobportal_mvcModel.sp_alljobdisplay_Result)" />
+          <FunctionImport Name="sp_applicationcount" ReturnType="Collection(Int32)">
+            <Parameter Name="usrid" Mode="In" Type="Int32" />
+            <Parameter Name="jobid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_applicationinsert">
+            <Parameter Name="uid" Mode="In" Type="Int32" />
+            <Parameter Name="jobid" Mode="In" Type="Int32" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="resume" Mode="In" Type="String" />
+            <Parameter Name="sts" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_displayalljobs_Result">
           <Property Type="Int32" Name="job_id" Nullable="false" />
@@ -423,6 +445,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_applicationcount" FunctionName="jobportal_mvcModel.Store.sp_applicationcount" />
+          <FunctionImportMapping FunctionImportName="sp_applicationinsert" FunctionName="jobportal_mvcModel.Store.sp_applicationinsert" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

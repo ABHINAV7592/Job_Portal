@@ -265,5 +265,43 @@ namespace job_portal
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_alljobdisplay_Result>("sp_alljobdisplay");
         }
+    
+        public virtual ObjectResult<Nullable<int>> sp_applicationcount(Nullable<int> usrid, Nullable<int> jobid)
+        {
+            var usridParameter = usrid.HasValue ?
+                new ObjectParameter("usrid", usrid) :
+                new ObjectParameter("usrid", typeof(int));
+    
+            var jobidParameter = jobid.HasValue ?
+                new ObjectParameter("jobid", jobid) :
+                new ObjectParameter("jobid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_applicationcount", usridParameter, jobidParameter);
+        }
+    
+        public virtual int sp_applicationinsert(Nullable<int> uid, Nullable<int> jobid, Nullable<System.DateTime> date, string resume, string sts)
+        {
+            var uidParameter = uid.HasValue ?
+                new ObjectParameter("uid", uid) :
+                new ObjectParameter("uid", typeof(int));
+    
+            var jobidParameter = jobid.HasValue ?
+                new ObjectParameter("jobid", jobid) :
+                new ObjectParameter("jobid", typeof(int));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var resumeParameter = resume != null ?
+                new ObjectParameter("resume", resume) :
+                new ObjectParameter("resume", typeof(string));
+    
+            var stsParameter = sts != null ?
+                new ObjectParameter("sts", sts) :
+                new ObjectParameter("sts", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_applicationinsert", uidParameter, jobidParameter, dateParameter, resumeParameter, stsParameter);
+        }
     }
 }

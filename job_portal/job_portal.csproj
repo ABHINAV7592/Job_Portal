@@ -134,6 +134,7 @@
     <Compile Include="Controllers\cmpnyinsertController.cs" />
     <Compile Include="Controllers\cmpnyprofileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\jobappicationController.cs" />
     <Compile Include="Controllers\jobpostingController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\userprofileController.cs" />
@@ -165,6 +166,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddApplication.cs" />
     <Compile Include="Models\CompanyInsert.cs" />
     <Compile Include="Models\JobPost.cs" />
     <Compile Include="Models\JobSearch.cs" />
@@ -243,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\jobappication\" />
     <Folder Include="Views\postjobs\" />
     <Folder Include="Views\userinsert\" />
   </ItemGroup>
