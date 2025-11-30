@@ -1,0 +1,60 @@
+﻿@model job_portal.Models.AddApplication
+@{
+    ViewBag.Title = "application_pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Apply For This Post</h2>
+<div>
+    @using (Html.BeginForm("application_click", "jobapplication", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label>Title:</label>
+        </div>
+        <div>
+            @Html.DisplayFor(m => m.jobtitle)
+        </div>
+
+        <div>
+            <label>Company Name:</label>
+        </div>
+        <div>
+            @Html.DisplayFor(m => m.companyname)
+        </div>
+
+        <div>
+            <label>Description:</label>
+        </div>
+        <div>
+            @Html.DisplayFor(m => m.description)
+        </div>
+
+        <div>
+            <label>Location:</label>
+        </div>
+        <div>
+            @Html.DisplayFor(m => m.location)
+        </div>
+
+        <div>
+            <label>Salary:</label>
+        </div>
+        <div>
+            @Html.DisplayFor(m => m.jobsalary)
+        </div>
+
+       
+        <div>
+            <label>Resume:</label>
+        </div>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+        </div>
+
+        <div>
+            <input type="submit" value="Apply" />
+            @Html.DisplayFor(m => m.applicationmsg)
+        </div>
+    }
+</div>
+

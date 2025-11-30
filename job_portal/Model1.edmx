@@ -146,6 +146,10 @@
           <Parameter Name="email" Type="varchar" Mode="In" />
           <Parameter Name="pswd" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="sp_selectonejob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cid" Type="int" Mode="In" />
+          <Parameter Name="jid" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="jobportal_mvcModelStoreContainer">
           <EntitySet Name="company_table" EntityType="Self.company_table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="job_table" EntityType="Self.job_table" Schema="dbo" store:Type="Tables" />
@@ -305,6 +309,10 @@
             <Parameter Name="resume" Mode="In" Type="String" />
             <Parameter Name="sts" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_selectonejob" ReturnType="Collection(jobportal_mvcModel.sp_selectonejob_Result)">
+            <Parameter Name="cid" Mode="In" Type="Int32" />
+            <Parameter Name="jid" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_displayalljobs_Result">
           <Property Type="Int32" Name="job_id" Nullable="false" />
@@ -335,6 +343,13 @@
           <Property Type="DateTime" Name="end_date" Nullable="false" />
           <Property Type="String" Name="job_description" Nullable="false" MaxLength="150" />
           <Property Type="String" Name="job_type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Job_salary" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_selectonejob_Result">
+          <Property Type="String" Name="company_name" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="job_title" Nullable="false" MaxLength="150" />
+          <Property Type="String" Name="job_location" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="job_description" Nullable="false" MaxLength="150" />
           <Property Type="String" Name="Job_salary" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
@@ -447,6 +462,17 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_applicationcount" FunctionName="jobportal_mvcModel.Store.sp_applicationcount" />
           <FunctionImportMapping FunctionImportName="sp_applicationinsert" FunctionName="jobportal_mvcModel.Store.sp_applicationinsert" />
+          <FunctionImportMapping FunctionImportName="sp_selectonejob" FunctionName="jobportal_mvcModel.Store.sp_selectonejob">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="jobportal_mvcModel.sp_selectonejob_Result">
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="job_title" ColumnName="job_title" />
+                <ScalarProperty Name="job_location" ColumnName="job_location" />
+                <ScalarProperty Name="job_description" ColumnName="job_description" />
+                <ScalarProperty Name="Job_salary" ColumnName="Job_salary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

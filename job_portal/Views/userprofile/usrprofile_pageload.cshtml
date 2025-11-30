@@ -68,8 +68,8 @@
     <td>
         @Html.ActionLink(
             "ApplyNow",
-            "Application_load",
-            "AddApplication",
+            "application_pageload",
+            "jobapplication",
             new { jid = item.Job_id, cid = item.Company_id },
             new { @class = "button", style = "background-color: green; color: white; padding: 5px 10px; border-radius: 5px; text-decoration:none;" }
         )

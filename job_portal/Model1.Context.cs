@@ -303,5 +303,18 @@ namespace job_portal
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_applicationinsert", uidParameter, jobidParameter, dateParameter, resumeParameter, stsParameter);
         }
+    
+        public virtual ObjectResult<sp_selectonejob_Result> sp_selectonejob(Nullable<int> cid, Nullable<int> jid)
+        {
+            var cidParameter = cid.HasValue ?
+                new ObjectParameter("cid", cid) :
+                new ObjectParameter("cid", typeof(int));
+    
+            var jidParameter = jid.HasValue ?
+                new ObjectParameter("jid", jid) :
+                new ObjectParameter("jid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_selectonejob_Result>("sp_selectonejob", cidParameter, jidParameter);
+        }
     }
 }

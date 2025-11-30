@@ -134,7 +134,7 @@
     <Compile Include="Controllers\cmpnyinsertController.cs" />
     <Compile Include="Controllers\cmpnyprofileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\jobappicationController.cs" />
+    <Compile Include="Controllers\jobapplicationController.cs" />
     <Compile Include="Controllers\jobpostingController.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\userprofileController.cs" />
@@ -177,6 +177,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_displayalljobs_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_selectonejob_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="user_table.cs">
@@ -242,10 +245,12 @@
     <Content Include="Views\userprofile\usrprofile_pageload.cshtml" />
     <Content Include="Views\login\login_pageload.cshtml" />
     <Content Include="Views\jobposting\jobpost_pageload.cshtml" />
+    <Content Include="Views\jobappication\application_pageload.cshtml" />
+    <Content Include="Views\jobapplication\application_pageload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\jobappication\" />
+    <Folder Include="resume\" />
     <Folder Include="Views\postjobs\" />
     <Folder Include="Views\userinsert\" />
   </ItemGroup>
