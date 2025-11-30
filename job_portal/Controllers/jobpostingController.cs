@@ -61,7 +61,7 @@ namespace job_portal.Controllers
                 clsobj.jobskill = getskillsdata();
 
                 int uid = Convert.ToInt32(Session["uid"]);
-                dbobj.sp_insertjobpost(uid,clsobj.jobtitle, clsobj.location, clsobj.experience, clsobj.skills, clsobj.qualification, clsobj.passoutyear, "Active", clsobj.jobstartdate, clsobj.jobenddate, clsobj.jobdescription, clsobj.jobtype);
+                dbobj.sp_insertjobpost(uid,clsobj.jobtitle, clsobj.location, clsobj.experience, clsobj.skills, clsobj.qualification, clsobj.passoutyear, "Active", clsobj.jobstartdate, clsobj.jobenddate, clsobj.jobdescription, clsobj.jobtype,clsobj.jobsalary);
                 clsobj.jobmsg = "Successfully Posted";
                 return View("jobpost_pageload", clsobj);
             }

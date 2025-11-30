@@ -10,9 +10,8 @@
 namespace job_portal
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class job_table
+    public partial class sp_alljobdisplay_Result
     {
         public int job_id { get; set; }
         public int company_id { get; set; }

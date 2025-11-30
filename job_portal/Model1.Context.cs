@@ -190,7 +190,7 @@ namespace job_portal
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_emailcount", emailParameter);
         }
     
-        public virtual int sp_insertjobpost(Nullable<int> cmpnyid, string jobtitle, string loc, Nullable<int> exp, string skill, string qual, Nullable<int> passyr, string jobsts, Nullable<System.DateTime> strtdate, Nullable<System.DateTime> enddate, string desc, string jobtype)
+        public virtual int sp_insertjobpost(Nullable<int> cmpnyid, string jobtitle, string loc, Nullable<int> exp, string skill, string qual, Nullable<int> passyr, string jobsts, Nullable<System.DateTime> strtdate, Nullable<System.DateTime> enddate, string desc, string jobtype, string jobsalary)
         {
             var cmpnyidParameter = cmpnyid.HasValue ?
                 new ObjectParameter("cmpnyid", cmpnyid) :
@@ -240,12 +240,30 @@ namespace job_portal
                 new ObjectParameter("jobtype", jobtype) :
                 new ObjectParameter("jobtype", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insertjobpost", cmpnyidParameter, jobtitleParameter, locParameter, expParameter, skillParameter, qualParameter, passyrParameter, jobstsParameter, strtdateParameter, enddateParameter, descParameter, jobtypeParameter);
+            var jobsalaryParameter = jobsalary != null ?
+                new ObjectParameter("jobsalary", jobsalary) :
+                new ObjectParameter("jobsalary", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_insertjobpost", cmpnyidParameter, jobtitleParameter, locParameter, expParameter, skillParameter, qualParameter, passyrParameter, jobstsParameter, strtdateParameter, enddateParameter, descParameter, jobtypeParameter, jobsalaryParameter);
         }
     
         public virtual ObjectResult<sp_displayalljobs_Result> sp_displayalljobs()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_displayalljobs_Result>("sp_displayalljobs");
+        }
+    
+        public virtual int sp_jobsearch(string qry)
+        {
+            var qryParameter = qry != null ?
+                new ObjectParameter("qry", qry) :
+                new ObjectParameter("qry", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_jobsearch", qryParameter);
+        }
+    
+        public virtual ObjectResult<sp_alljobdisplay_Result> sp_alljobdisplay()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_alljobdisplay_Result>("sp_alljobdisplay");
         }
     }
 }

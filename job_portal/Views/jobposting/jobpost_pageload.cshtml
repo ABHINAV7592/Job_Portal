@@ -97,8 +97,16 @@
         </div>
 
         <div>
+            <label>Job Salary:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.jobsalary)
+            @Html.ValidationMessageFor(m => m.jobsalary)
+        </div>
+
+        <div>
             <input type="submit" value="Post" />
-            @Html.DisplayFor(m=>m.jobmsg)
+            @Html.DisplayFor(m => m.jobmsg)
         </div>
     }
 </div>

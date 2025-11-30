@@ -43,6 +43,8 @@ namespace job_portal.Models
         public string jobdescription { set; get; }
         [Required(ErrorMessage = "Enter Job Type")]
         public string jobtype { set; get; }
+        [Required(ErrorMessage ="Enter Salary")]
+        public string jobsalary { set; get; }
         public string jobmsg { set; get; }
     }
 }
